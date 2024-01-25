@@ -5,12 +5,10 @@ def convert_to_yolopose_format(data, image_width, image_height, output_dir):
     # if not os.path.exists(output_dir):
     #     os.makedirs(output_dir)
 
-    # Extract data from JSON
-    print(data)
-
-    file_name = data['mpii_image'].replace(".jpg", ".txt")
-    keypoints = data['mpii_body_pts']
-    bbox = data['head_box']  
+    file_name = data["mpii_image"].replace(".jpg", ".txt")
+    label = data["mpii_annorect_idx"]
+    keypoints = data["mpii_body_pts"]
+    bbox = data["hand_box_center"]  
 
     # Calculate bbox center, width, and height 
     #TODO: check this :)
@@ -29,7 +27,7 @@ def convert_to_yolopose_format(data, image_width, image_height, output_dir):
     norm_keypoints = [f"{kp[0]/image_width} {kp[1]/image_height}" for kp in keypoints if kp[2] != 0]
 
     #combine
-    yolopose_line = f"0 {x_center} {y_center} {width} {height} {' '.join(norm_keypoints)}\n"
+    yolopose_line = f"{label} {x_center} {y_center} {width} {height} {' '.join(norm_keypoints)}\n"
     print(yolopose_line)
 
     # Write
