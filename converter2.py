@@ -6,11 +6,6 @@ import matplotlib as plt
 import matplotlib.pyplot as plt
 import checkyolo
 
-
-plt.rcParams['figure.figsize'] = (20,20)
-plt.rcParams['image.interpolation'] = 'nearest'
-plt.rcParams['image.cmap'] = 'gray'
-
 outpath = "test_output/"
 if not os.path.isdir(outpath):
     os.makedirs(outpath)
@@ -58,7 +53,10 @@ for f in files:
 
     #format: <class-index> <x> <y> <width> <height> <px1> <py1> <px2> <py2> ... <pxn> <pyn>
     yolopose_line = f"{label} {normalized_center_x} {normalized_center_y} {normalized_bbox_width} {normalized_bbox_height} {norm_keypoints_str}\n"
-            
+    base_name = f[:-5] 
+    txt_file_path = os.path.join(outpath, base_name + '.txt')
+    with open(txt_file_path, 'w') as file:
+        file.write(yolopose_line)
             
     ############### testing ###############
     checkyolo.test_annotations(inpath, outpath, f, yolopose_line, width, height)

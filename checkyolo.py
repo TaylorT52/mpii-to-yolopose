@@ -37,12 +37,12 @@ def test_annotations(inpath, outpath, f, yolof, width, height):
     # Draw hand keypoints
     for p, point in enumerate(dn_handpoints):
         plt.plot(point[0], point[1], 'r.')
-        plt.text(point[0], point[1], f'{p}')
+        #plt.text(point[0], point[1], f'{p}')
 
     # Draw edges
     for e in edges:
         plt.plot([dn_handpoints[idx][0] for idx in e],
-                    [dn_handpoints[idx][1] for idx in e], color='b')
+        [dn_handpoints[idx][1] for idx in e], color='b')
 
     # Draw center of bbox
     plt.text(dn_centerx, dn_centery, 'C')
