@@ -7,11 +7,12 @@ import matplotlib.pyplot as plt
 import checkyolo
 import shutil
 
+#TODO: ADD OUTPATH HERE
 outpath = "../../labels_training/"
 if not os.path.isdir(outpath):
     os.makedirs(outpath)
 
-# Input data paths
+#TODO: ADD INPUT DATA PATH HERE
 paths = ['test/']
 inpath = paths[0]
 files = sorted([f for f in os.listdir(inpath) if f.endswith('.json')])
@@ -64,4 +65,4 @@ for f in files:
     print(yolopose_line)
 
     ############### testing ###############
-    checkyolo.test_annotations(inpath, outpath, f, yolopose_line, width, height)
+    checkyolo.test_annotations(inpath, outpath, f, yolopose_line, width, height, output_annotations=False)

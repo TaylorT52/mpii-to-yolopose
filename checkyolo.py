@@ -4,7 +4,7 @@ import numpy as np
 import json
 import matplotlib.pyplot as plt
 
-def test_annotations(inpath, outpath, f, yolof, width, height):
+def test_annotations(inpath, outpath, f, yolof, width, height, output_annotations):
     # Parse YOLO formatted string
     #current format: <class-index> <x> <y> <width> <height> <px1> <py1> <px2> <py2> ... <pxn> <pyn>
     sep_yolof = [float(val) for val in yolof.split(" ")]
@@ -54,4 +54,5 @@ def test_annotations(inpath, outpath, f, yolof, width, height):
     plt.gca().add_patch(rect)
 
     plt.axis('off')
-    plt.savefig(outpath + f[0:-5] + 'test' + '.jpg', bbox_inches='tight')
+    if output_annotations:
+        plt.savefig(outpath + f[0:-5] + 'test' + '.jpg', bbox_inches='tight')
