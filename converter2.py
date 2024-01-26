@@ -4,6 +4,7 @@ import numpy as np
 import json
 import matplotlib as plt
 import matplotlib.pyplot as plt
+import checkyolo
 
 
 plt.rcParams['figure.figsize'] = (20,20)
@@ -59,29 +60,4 @@ for f in files:
             
             
     ############### testing ###############
-    # Plot annotations
-
-    edges = [[0,1],[1,2],[2,3],[3,4],[0,5],[5,6],[6,7],[7,8],[0,9],[9,10],[10,11],[11,12],[0,13],[13,14],[14,15],[15,16],[0,17],[17,18],[18,19],[19,20]]
-    
-    plt.clf()
-    print(inpath+f[0:-5]+'.jpg')
-    im = plt.imread(inpath+f[0:-5]+'.jpg')
-    plt.imshow(im)
-
-    for p in range(len(hand_points)):
-        if pts[p,2]!=0:
-            plt.plot(pts[p,0], pts[p,1],'r.')
-            plt.text(pts[p,0], pts[p,1], '{0}'.format(p))
-
-    for ie, e in enumerate(edges):
-        if np.all(pts[e,2]!=0):
-            plt.plot(pts[e,0],pts[e,1],color='b')
-
-    plt.text(center[0], center[1], 'C')
-    bbox_x_left = min(x)  
-    bbox_y_top = min(y)
-    rect = plt.Rectangle((bbox_x_left, bbox_y_top), bbox_w, bbox_h, linewidth=1, edgecolor='r', facecolor='none')
-    plt.gca().add_patch(rect)
-
-    plt.axis('off')
-    plt.savefig(outpath+f[0:-5]+'.jpg', bbox_inches='tight')
+    checkyolo.test_annotations(inpath, outpath, f, yolopose_line, width, height)
