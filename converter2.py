@@ -15,7 +15,7 @@ paths = ['test/']
 inpath = paths[0]
 files = sorted([f for f in os.listdir(inpath) if f.endswith('.json')])
 
-for f in files:
+for f in files: 
     im = plt.imread(inpath+f[0:-5]+'.jpg')
     height, width = im.shape[:2]
 
@@ -30,6 +30,7 @@ for f in files:
     center = dat["hand_box_center"]  
     dat['hand_pts'] = pts.tolist()
 
+    #normalize for yolo!
     x = []
     y = []
     hand_points = []
