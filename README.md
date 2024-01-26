@@ -7,7 +7,7 @@ mpii format to yolopose format for using mpii data
 
 # set up
 directory structure
-├── test                    # with images & json
+├── test                    # with images & json <br>
 ├── test_output             # output files (.txt in yolov8 format & image w/ tested annotations)
 
 - run converter2.py script 
