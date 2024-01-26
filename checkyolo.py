@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 
 def test_annotations(inpath, outpath, f, yolof, width, height):
     # Parse YOLO formatted string
+    #current format: <class-index> <x> <y> <width> <height> <px1> <py1> <px2> <py2> ... <pxn> <pyn>
     sep_yolof = [float(val) for val in yolof.split(" ")]
     pts = sep_yolof[5:]
     center = (sep_yolof[1], sep_yolof[2])

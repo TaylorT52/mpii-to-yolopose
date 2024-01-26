@@ -56,6 +56,7 @@ for f in files:
     normalized_bbox_height = bbox_h / height
     norm_keypoints_str = ' '.join(str(num) for num in normalized_hand_points)
 
+    #format: <class-index> <x> <y> <width> <height> <px1> <py1> <px2> <py2> ... <pxn> <pyn>
     yolopose_line = f"{label} {normalized_center_x} {normalized_center_y} {normalized_bbox_width} {normalized_bbox_height} {norm_keypoints_str}\n"
             
             
