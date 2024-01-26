@@ -8,12 +8,12 @@ import checkyolo
 import shutil
 
 #TODO: ADD OUTPATH HERE
-outpath = "../../labels_training/"
+outpath = "../../labels_training/manual_test/"
 if not os.path.isdir(outpath):
     os.makedirs(outpath)
 
 #TODO: ADD INPUT DATA PATH HERE
-paths = ['test/']
+paths = ["../../hand-labels-yolof/manual_train/"]
 inpath = paths[0]
 files = sorted([f for f in os.listdir(inpath) if f.endswith('.json')])
 
@@ -27,8 +27,14 @@ for f in files:
     pts = np.array(dat['hand_pts'])
     invalid = pts[:,2]!=1
     
-    file_name = dat["mpii_image"].replace(".jpg", ".txt")
-    label = dat["mpii_annorect_idx"]
+    file_name = f.replace(".jpg", ".txt") 
+
+    #accounting for no mpii_annorect_idx
+    try:
+        label = dat["mpii_annorect_idx"]
+    except: 
+        label = 0
+
     center = dat["hand_box_center"]  
     dat['hand_pts'] = pts.tolist()
 
@@ -65,4 +71,4 @@ for f in files:
     print(yolopose_line)
 
     ############### testing ###############
-    checkyolo.test_annotations(inpath, outpath, f, yolopose_line, width, height, output_annotations=False)
+    checkyolo.test_annotations(inpath, outpath, f, yolopose_line, width, height, output_annotations=True)
