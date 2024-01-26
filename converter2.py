@@ -5,8 +5,9 @@ import json
 import matplotlib as plt
 import matplotlib.pyplot as plt
 import checkyolo
+import shutil
 
-outpath = "test_output/"
+outpath = "../../labels_training/"
 if not os.path.isdir(outpath):
     os.makedirs(outpath)
 
@@ -58,6 +59,9 @@ for f in files:
     txt_file_path = os.path.join(outpath, base_name + '.txt')
     with open(txt_file_path, 'w') as file:
         file.write(yolopose_line)
-            
+        shutil.copy(inpath+f[0:-5]+'.jpg', outpath)
+
+    print(yolopose_line)
+
     ############### testing ###############
     checkyolo.test_annotations(inpath, outpath, f, yolopose_line, width, height)
