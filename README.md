@@ -6,7 +6,7 @@ mpii format to yolopose format for using mpii data
 - for custom training yolov8-pose models
 
 # set up
-directory structure
+directory structure<br>
 ├── test                    # with images & json <br>
 ├── test_output             # output files (.txt in yolov8 format & image w/ tested annotations)
 
