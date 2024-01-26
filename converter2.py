@@ -14,6 +14,7 @@ if not os.path.isdir(outpath):
 
 #TODO: ADD INPUT DATA PATH HERE
 paths = ["../../hand-labels-yolof/manual_train/"]
+test_img_path = ["../../hand-labels-yolof/test_imgs/"]
 inpath = paths[0]
 files = sorted([f for f in os.listdir(inpath) if f.endswith('.json')])
 
@@ -71,4 +72,4 @@ for f in files:
     print(yolopose_line)
 
     ############### testing ###############
-    checkyolo.test_annotations(inpath, outpath, f, yolopose_line, width, height, output_annotations=True)
+    checkyolo.test_annotations(test_img_path, outpath, f, yolopose_line, width, height, output_annotations=True)
