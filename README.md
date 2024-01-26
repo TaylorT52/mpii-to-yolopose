@@ -5,10 +5,9 @@ mpii format to yolopose format for using mpii data
 - Yolopose format: https://docs.ultralytics.com/datasets/pose/#ultralytics-yolo-format
 - for custom training yolov8-pose models
 
-# Set up
+# set up
 directory structure
-- test
-    - images + json
-- test_output
+├── test                    # with images & json
+├── test_output             # output files (.txt in yolov8 format & image w/ tested annotations)
 
-- then run converter2.py script 
+- run converter2.py script 
