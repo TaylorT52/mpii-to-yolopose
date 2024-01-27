@@ -31,7 +31,7 @@ def test_annotations(inpath, outpath, f, yolof, width, height, output_annotation
 
     # Display image
     plt.clf()
-    im = plt.imread(inpath + f[0:-5] + '.jpg')
+    im = plt.imread(inpath)
     plt.imshow(im)
 
     # Draw hand keypoints

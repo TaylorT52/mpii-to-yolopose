@@ -2,26 +2,25 @@ import os
 import os.path
 import numpy as np
 import json
-import matplotlib as plt
 import matplotlib.pyplot as plt
 import checkyolo
 import shutil
 
 #TODO: ADD OUTPATH HERE
-outpath = "../../labels_training/manual_test/"
+outpath = "../../labels_training/manual_train/"
 if not os.path.isdir(outpath):
     os.makedirs(outpath)
 
 #TODO: ADD INPUT DATA PATH HERE
-paths = ["../../hand-labels-yolof/manual_train/"]
-test_img_path = ["../../hand-labels-yolof/test_imgs/"]
-inpath = paths[0]
+test_img_path = "../../labels_training/test_annot/"
+#TODO: ADD IN PATH HERE
+inpath = "../../hand-labels-yolof/manual_train"
 files = sorted([f for f in os.listdir(inpath) if f.endswith('.json')])
 
 for f in files: 
-    im = plt.imread(inpath+f[0:-5]+'.jpg')
+    img_path = inpath+f[0:-5]+'.jpg'
+    im = plt.imread(img_path)
     height, width = im.shape[:2]
-
     with open(inpath+f, 'r') as fid:
         dat = json.load(fid)
 
@@ -72,4 +71,4 @@ for f in files:
     print(yolopose_line)
 
     ############### testing ###############
-    checkyolo.test_annotations(test_img_path, outpath, f, yolopose_line, width, height, output_annotations=True)
+    checkyolo.test_annotations(img_path, test_img_path, f, yolopose_line, width, height, output_annotations=True)
