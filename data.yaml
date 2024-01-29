@@ -1,0 +1,16 @@
+# Train/val/test sets as 1) dir: path/to/imgs, 2) file: path/to/imgs.txt, or 3) list: [path/to/imgs1, path/to/imgs2, ..]
+path: ~/Desktop/labels_training  # dataset root dir
+train: ~/Desktop/labels_training/manual_train  # train images
+val: ~/Desktop/labels_training/manual_test  # val images
+
+# Keypoints
+kpt_shape: [21, 2]  # number of keypoints, number of dims (2 for x,y or 3 for x,y,visible)
+#no flip index needed, should be same order l/r
+
+# Classes dictionary
+names:
+  0: hand
+  1: hand
+  2: hand
+  3: hand
+  4: hand
